@@ -73,16 +73,6 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
 
-        .hero-greeting {
-            display: block;
-            color: var(--accent);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
@@ -192,13 +182,177 @@
             border-color: var(--accent-hover);
         }
 
+        /* Pricing Section */
+        .pricing-section {
+            padding: 5rem 0;
+            page-break-before: auto;
+        }
+
+        .pricing-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent);
+            transform: scale(1.05);
+            background: linear-gradient(180deg, #1f241a 0%, var(--bg-card) 100%);
+            box-shadow: 0 15px 40px rgba(174, 197, 135, 0.1);
+            z-index: 1;
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent);
+            color: #12140F;
+            padding: 0.3rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .plan-target {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--accent);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .plan-details {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .plan-btn {
+            display: block;
+            text-align: center;
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .plan-btn:hover {
+            background-color: var(--accent);
+            color: #12140F;
+        }
+
+        .pricing-card.featured .plan-btn {
+            background-color: var(--accent);
+            color: #12140F;
+        }
+
+        .pricing-card.featured .plan-btn:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            margin: 2rem auto 5rem;
+            max-width: 800px;
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
         /* Footer */
         footer {
             background-color: var(--bg-card);
             color: var(--text-main);
             text-align: center;
             padding: 4rem 2rem;
-            margin-top: 2rem;
             border-top: 1px solid var(--border-color);
             border-top-left-radius: 40px;
             border-top-right-radius: 40px;
@@ -240,11 +394,23 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+            .pricing-grid {
+                display: flex;
+                flex-direction: column;
+            }
+            .pricing-card.featured {
+                transform: none;
+                order: -1; /* Joga o plano intermediário para o topo no mobile */
+                margin-top: 1rem;
+            }
+            .pricing-card.featured:hover {
+                transform: translateY(-5px);
+            }
         }
 
         /* Print Specific Adjustments */
         @media print {
-            body, .hero, footer {
+            body, .hero, footer, .pricing-card, .cta-section {
                 background-color: var(--bg-dark) !important;
                 color: var(--text-main) !important;
             }
@@ -268,6 +434,10 @@
             }
             .section-title::after {
                 background-color: var(--accent) !important;
+            }
+            .pricing-card.featured {
+                transform: none !important;
+                box-shadow: none !important;
             }
         }
     </style>
@@ -320,18 +490,94 @@
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="iframe-container">
-                        <iframe src="https://sitecelia.vercel.app/" class="iframe-preview" scrolling="no" tabindex="-1"></iframe>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE PACOTES -->
+        <section class="pricing-section" id="planos">
+            <h2 class="section-title">Planos para criar seu site profissional</h2>
+            <p class="pricing-subtitle">Escolha a opção ideal para o seu momento e comece a ter presença online de forma simples.</p>
+            
+            <div class="pricing-grid">
+                
+                <!-- PLANO BÁSICO -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Básico</h3>
+                    <div class="plan-price">R$ 280</div>
+                    <p class="plan-target">Indicado para: quem está começando</p>
+                    
+                    <ul class="plan-features">
+                        <li>Site one page simples</li>
+                        <li>Até 5 seções</li>
+                        <li>Layout responsivo</li>
+                        <li>Botão de WhatsApp</li>
+                        <li>Integração com Instagram</li>
+                        <li>Estrutura baseada em template</li>
+                    </ul>
+                    
+                    <div class="plan-details">
+                        <p><strong>Prazo:</strong> 3 a 5 dias úteis</p>
+                        <p><strong>Ajustes:</strong> até 2 rodadas</p>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Celinha Bispo Depiladora</h3>
-                        <p class="project-desc">Landing page premium focada na experiência do cliente, transmitindo cuidado, higiene e profissionalismo.</p>
-                        <a href="https://sitecelia.vercel.app/" class="project-link" target="_blank">Acessar o Site →</a>
+                    
+                    <a href="https://wa.me/5521970696052?text=Ol%C3%A1%2C%20gostaria%20de%20come%C3%A7ar%20com%20o%20Plano%20B%C3%A1sico%20%28R%24%20280%29%21" class="plan-btn" target="_blank">Quero começar</a>
+                </div>
+
+                <!-- PLANO INTERMEDIÁRIO -->
+                <div class="pricing-card featured">
+                    <div class="badge">Mais escolhido</div>
+                    <h3 class="plan-name">Intermediário</h3>
+                    <div class="plan-price">R$ 480</div>
+                    <p class="plan-target">Indicado para: melhorar presença e gerar mais contatos</p>
+                    
+                    <ul class="plan-features">
+                        <li>One page mais completo</li>
+                        <li>Até 7–8 seções</li>
+                        <li>Design parcialmente personalizado</li>
+                        <li>Copy estruturada básica</li>
+                        <li>Botão de WhatsApp fixo</li>
+                        <li>Integração com Google Maps</li>
+                    </ul>
+                    
+                    <div class="plan-details">
+                        <p><strong>Prazo:</strong> 5 a 8 dias úteis</p>
+                        <p><strong>Ajustes:</strong> até 3 rodadas</p>
                     </div>
+                    
+                    <a href="https://wa.me/5521970696052?text=Ol%C3%A1%2C%20quero%20esse%20plano%20Intermedi%C3%A1rio%20%28R%24%20480%29%21" class="plan-btn" target="_blank">Quero esse plano</a>
+                </div>
+
+                <!-- PLANO AVANÇADO -->
+                <div class="pricing-card">
+                    <h3 class="plan-name">Avançado</h3>
+                    <div class="plan-price">R$ 650</div>
+                    <p class="plan-target">Indicado para: quem quer um site completo e bem apresentado</p>
+                    
+                    <ul class="plan-features">
+                        <li>One page premium ou multipágina simples</li>
+                        <li>Design mais personalizado</li>
+                        <li>Estrutura mais estratégica</li>
+                        <li>Copy mais organizada</li>
+                        <li>Destaques visuais e melhor hierarquia</li>
+                        <li>WhatsApp em evidência</li>
+                    </ul>
+                    
+                    <div class="plan-details">
+                        <p><strong>Prazo:</strong> 7 a 10 dias úteis</p>
+                        <p><strong>Ajustes:</strong> até 4 rodadas</p>
+                    </div>
+                    
+                    <a href="https://wa.me/5521970696052?text=Ol%C3%A1%2C%20quero%20um%20site%20completo%20-%20Plano%20Avan%C3%A7ado%20%28R%24%20650%29%21" class="plan-btn" target="_blank">Quero um site completo</a>
                 </div>
 
             </div>
+        </section>
+
+        <!-- CTA FINAL DA SEÇÃO -->
+        <section class="cta-section">
+            <h3>Não sabe qual escolher?</h3>
+            <p>Fale comigo no WhatsApp e eu te ajudo a escolher a melhor opção para o seu negócio.</p>
+            <a href="https://wa.me/5521970696052?text=Ol%C3%A1%2C%20n%C3%A3o%20sei%20qual%20plano%20escolher.%20Pode%20me%20ajudar%3F" class="contact-btn" target="_blank">👉 Falar no WhatsApp</a>
         </section>
     </div>
 
